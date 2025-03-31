@@ -8,9 +8,13 @@ from pages.customer_login import CustomerLogin
 
 @pytest.fixture()
 def driver():
-    chrome_driver = webdriver.Chrome()
-    option = Options()
-    option.add_argument("--disable-blink-features=AutomationControlled")
+
+    options = Options()
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    chrome_driver = webdriver.Chrome(options=options)
     sleep(3)
     return chrome_driver
 
