@@ -1,3 +1,5 @@
+import random
+
 from selenium import webdriver
 import pytest
 from time import sleep
@@ -16,7 +18,8 @@ def driver():
     options.add_argument("--disable-dev-shm-usage")
     chrome_driver = webdriver.Chrome(options=options)
     sleep(3)
-    return chrome_driver
+    yield chrome_driver
+    chrome_driver.save_screenshot(f'screen{random.randrange(1, 10000)}.png')
 
 
 @pytest.fixture()

@@ -1,8 +1,9 @@
 from time import sleep
+import pytest
 from pages.customer_login import CustomerLogin
 
 
-
+@pytest.mark.smoke
 def test_incorrect_login(login_page):
     sleep(10)
     login_page.open_page()
